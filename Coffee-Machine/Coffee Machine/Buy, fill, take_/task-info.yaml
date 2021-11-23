@@ -360,6 +360,21 @@ files:
         }
     }
   learner_created: false
+- name: src/machine/Machine.java
+  visible: true
+  learner_created: true
+- name: src/machine/Espresso.java
+  visible: true
+  learner_created: true
+- name: src/machine/Latte.java
+  visible: true
+  learner_created: true
+- name: src/machine/Cappuccino.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/33/stages/178/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Tue, 23 Nov 2021 21:49:40 UTC
 record: -1
