@@ -1,0 +1,19 @@
+type: code
+files:
+- name: src/Main.java
+  visible: true
+  text: |-
+    class Complex {
+
+        double real;
+        double image;
+
+        // write methods here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/2952#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 24 Nov 2021 09:39:04 UTC
+record: -1

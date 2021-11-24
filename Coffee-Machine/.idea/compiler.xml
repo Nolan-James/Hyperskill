@@ -9,6 +9,26 @@
       <module name="Coffee_Machine.Coffee_Machine-task-build-test-results.main" target="11" />
       <module name="Coffee_Machine.Coffee_Machine-task-build-tmp.main" target="11" />
       <module name="Coffee_Machine.Coffee_Machine-task.main" target="11" />
+      <module name="Coffee_Machine.Topics-Constructor-Geometric_cube.main" target="11" />
+      <module name="Coffee_Machine.Topics-Constructor-Theory.main" target="11" />
+      <module name="Coffee_Machine.Topics-Enums_in_Java-Currencies.main" target="11" />
+      <module name="Coffee_Machine.Topics-Enums_in_Java-Days_of_week.main" target="11" />
+      <module name="Coffee_Machine.Topics-Enums_in_Java-Hidden_enumeration.main" target="11" />
+      <module name="Coffee_Machine.Topics-Enums_in_Java-Theory.main" target="11" />
+      <module name="Coffee_Machine.Topics-Instance_methods-Car.main" target="11" />
+      <module name="Coffee_Machine.Topics-Instance_methods-Complex_numbers.main" target="11" />
+      <module name="Coffee_Machine.Topics-Instance_methods-Counter.main" target="11" />
+      <module name="Coffee_Machine.Topics-Instance_methods-Patient_needs_a_doctor.main" target="11" />
+      <module name="Coffee_Machine.Topics-Instance_methods-Simulating_a_clock.main" target="11" />
+      <module name="Coffee_Machine.Topics-Instance_methods-Theory.main" target="11" />
+      <module name="Coffee_Machine.Topics-Objects-Army.main" target="11" />
+      <module name="Coffee_Machine.Topics-Objects-Change_identities.main" target="11" />
+      <module name="Coffee_Machine.Topics-Objects-Preparing_full_name.main" target="11" />
+      <module name="Coffee_Machine.Topics-Objects-Theory.main" target="11" />
+      <module name="Coffee_Machine.Topics-Static_members-Detail_manufacturing.main" target="11" />
+      <module name="Coffee_Machine.Topics-Static_members-Project_constants_and_methods.main" target="11" />
+      <module name="Coffee_Machine.Topics-Static_members-Theory.main" target="11" />
+      <module name="Coffee_Machine.Topics-Static_members-Time_constants.main" target="11" />
       <module name="Coffee_Machine.util.main" target="11" />
     </bytecodeTargetLevel>
   </component>
