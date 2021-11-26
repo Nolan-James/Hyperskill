@@ -2,12 +2,16 @@ package numbers;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        boolean isEvenOrOdd = false;
+        boolean isBuzz = false;
+        boolean isDuck = false;
         String num = "";
         System.out.println("Enter a natural number:");
 
@@ -16,57 +20,80 @@ public class Main {
 
         if (number > 10) {
             num = Objects.toString(number);
-            System.out.println(num.charAt(num.length() - 1));
         }
 
+        boolean isNatural = getIsNatural(number);
 
-        // Is natural
-        if (!(number > 0)) {
+        if (isNatural) {
+            isEvenOrOdd = getIsEvenOrOdd(number);
+            isBuzz = getIsBuzz(number, num);
+            isDuck = getIsDuck(number);
+            System.out.println("Properties of " + number);
+            System.out.println("even: " + isEvenOrOdd);
+            System.out.println("odd: " + !isEvenOrOdd);
+            System.out.println("buzz: " + isBuzz);
+            System.out.println("duck: " + isDuck);
+        } else {
             System.out.println("This number is not natural!");
         }
 
-        // Is Even or Odd
-        if (number % 2 == 0) {
-            System.out.println("This number is Even.");
-        } else {
-            System.out.println("This number is Odd.");
+    }
+
+    private static boolean getIsDuck(int number) {
+        String stringValue = String.valueOf(number);
+
+        int[] digits = new int[stringValue.length()];
+
+        for (int i = 0; i < digits.length; i++) {
+            digits[i] = Integer.parseInt(String.valueOf(stringValue.charAt(i)));
         }
 
-        // Is Buzz
+        boolean result = false;
+        for (int i = 1; i < digits.length; i++) {
+
+            if (digits[0] == 0) {
+                if (digits[i] == 0) {
+                    result = true;
+                    break;
+                } else {
+                    result = false;
+                }
+            } else if (digits[i] == 0) {
+                result = true;
+                break;
+            } else {
+                result = false;
+            }
+        }
+        return result;
+    }
+
+    private static boolean getIsBuzz(int number, String num) {
         if (number == 7) {
-            System.out.println("It is a Buzz number.");
-            System.out.println("Explanation:");
-            System.out.println(number + " is divisible by 7 and ends with 7.");
+            return true;
         }
 
         if (number > 10) {
             num = String.valueOf(num.charAt(num.length() - 1));
             if (number % 7 == 0) {
-                System.out.println("It is a Buzz number.");
+                return true;
             } else if (Integer.parseInt(num) == 7) {
-                System.out.println("It is a Buzz number.");
+                return true;
             } else {
-                System.out.println("It is not a Buzz number.");
+                return false;
             }
         } else if (number % 7 == 0) {
-            System.out.println("It is a Buzz number.");
+            return true;
         } else {
-            System.out.println("It is not a Buzz number.");
+            return false;
         }
+    }
 
-        if (number > 10) {
-            System.out.println("Explanation");
-            if (number % 7 == 0 && num.charAt(num.length() - 1) == 7) {
-                System.out.println(number + " is divisible by 7 and ends with 7.");
-            } else if (number % 7 == 0) {
-                System.out.println(number + " is divisible by 7.");
-            } else if (Integer.parseInt(num) == 7) {
-                System.out.println(number + " ends with 7.");
-            } else {
-                System.out.println(number + " is neither divisible by 7 nor does it end with 7.");
-            }
-        } else {
-            System.out.println(number + " is neither divisible by 7 nor does it end with 7.");
-        }
+    private static boolean getIsEvenOrOdd(int number) {
+        return number % 2 == 0;
+    }
+
+    private static boolean getIsNatural(int number) {
+        return number > 0;
     }
 }

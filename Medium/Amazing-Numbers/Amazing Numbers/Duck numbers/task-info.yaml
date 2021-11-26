@@ -331,6 +331,12 @@ files:
 
     }
   learner_created: false
+- name: test/BuzzChecker.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/184/stages/932/implement#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 26 Nov 2021 14:02:15 UTC
+record: 2
