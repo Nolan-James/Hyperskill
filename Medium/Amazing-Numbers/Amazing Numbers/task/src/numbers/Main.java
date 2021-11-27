@@ -13,11 +13,16 @@ public class Main {
         boolean isBuzz = false;
         boolean isDuck = false;
         boolean isPalindromic = false;
+        boolean isGapful = false;
         String num = "";
 
         System.out.println("Welcome to Amazing Numbers!\n");
         System.out.println("Supported requests:");
         System.out.println("- enter a natural number to know its properties;");
+        System.out.println("- enter two natural numbers to obtain the properties of the list:");
+        System.out.println("  * the first parameter represents a starting number;");
+        System.out.println("  * the second parameter shows how many consecutive numbers are to be processed;");
+        System.out.println("- separate the parameters with one space;");
         System.out.println("- enter 0 to exit.");
 
 
@@ -38,6 +43,7 @@ public class Main {
                     isBuzz = getIsBuzz(number, num);
                     isDuck = getIsDuck(number);
                     isPalindromic = getIsPalindromic(number);
+                    isGapful = getIsGapful(number);
 
                     System.out.println("Properties of " + number);
                     System.out.println("even: " + isEvenOrOdd);
@@ -45,6 +51,7 @@ public class Main {
                     System.out.println("buzz: " + isBuzz);
                     System.out.println("duck: " + isDuck);
                     System.out.println("palindromic: " + isPalindromic);
+                    System.out.println("gapful: " + isGapful);
                 } else {
                     System.out.println("The first parameter should be a natural number or zero.");
                 }
@@ -52,6 +59,16 @@ public class Main {
         }
 
 
+    }
+
+    private static boolean getIsGapful(long number) {
+        String numberString = Objects.toString(number);
+        String firstDigit = (String.valueOf(numberString.charAt(0)));
+        String lastDigit = (String.valueOf(numberString.charAt(numberString.length() - 1)));
+        String concat = firstDigit + lastDigit;
+        int modifier = Integer.parseInt(concat);
+
+        return number % modifier == 0;
     }
 
     private static boolean getIsPalindromic(long number) {
