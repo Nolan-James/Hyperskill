@@ -14,6 +14,7 @@ public class Main {
         boolean isDuck = false;
         boolean isPalindromic = false;
         boolean isGapful = false;
+        boolean isSpy = false;
         long number = 0;
         String num = "";
 
@@ -23,6 +24,7 @@ public class Main {
         System.out.println("- enter two natural numbers to obtain the properties of the list:");
         System.out.println("  * the first parameter represents a starting number;");
         System.out.println("  * the second parameter shows how many consecutive numbers are to be processed;");
+        System.out.println("- two natural numbers and a property to search for;");
         System.out.println("- separate the parameters with one space;");
         System.out.println("- enter 0 to exit.");
 
@@ -53,6 +55,7 @@ public class Main {
                         } else {
                             isGapful = false;
                         }
+                        isSpy = getIsSpy(number, num);
 
                         System.out.println("Properties of " + number);
                         System.out.println("even: " + isEvenOrOdd);
@@ -61,10 +64,75 @@ public class Main {
                         System.out.println("duck: " + isDuck);
                         System.out.println("palindromic: " + isPalindromic);
                         System.out.println("gapful: " + isGapful);
+                        System.out.println("spy: " + isSpy);
                     } else {
                         System.out.println("The first parameter should be a natural number or zero.");
                     }
                 }
+            } else if (parts.length == 3) {
+                number = Long.parseLong(parts[0]);
+                int iterations = Integer.parseInt(parts[1]);
+                String property = parts[2].toLowerCase();
+
+                if (property.equals("buzz") || property.equals("duck") || property.equals("palindromic")
+                        || property.equals("gapful") || property.equals("spy")
+                        || property.equals("even") || property.equals("odd")) {
+                    if (getIsNatural(iterations)) {
+                        int count = 0;
+                        while (count != iterations) {
+                            for (long i = 0; i < iterations; i++) {
+                                if (count == iterations) {
+                                    break;
+                                }
+                                num = Objects.toString(number);
+                                parts[0] = String.valueOf(number);
+                                ArrayList<String> results = new ArrayList<>();
+                                isEvenOrOdd = getIsEvenOrOdd(number);
+                                isBuzz = getIsBuzz(number, num);
+                                isDuck = getIsDuck(number);
+                                isPalindromic = getIsPalindromic(number);
+                                if (parts[0].length() >= 3) {
+                                    isGapful = getIsGapful(number);
+                                } else {
+                                    isGapful = false;
+                                }
+                                isSpy = getIsSpy(number, num);
+
+                                if (isBuzz) results.add("buzz");
+                                if (isDuck) results.add("duck");
+                                if (isPalindromic) results.add("palindromic");
+                                if (isGapful) results.add("gapful");
+                                if (isEvenOrOdd) {
+                                    results.add("even");
+                                } else {
+                                    results.add("odd");
+                                }
+                                if (isSpy) results.add("spy");
+
+                                if (results.contains(property)) {
+                                    System.out.print(number + " is ");
+                                    for (int j = 0; j < results.size(); j++) {
+                                        if (j == results.size() - 1) {
+                                            System.out.print(results.get(j));
+                                        } else {
+                                            System.out.print(results.get(j) + ", ");
+                                        }
+
+                                    }
+                                    System.out.println("");
+                                    count++;
+                                    number++;
+                                } else {
+                                    number++;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    System.out.println("The property [" + property + "] is wrong.");
+                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]");
+                }
+
             } else {
                 number = Long.parseLong(parts[0]);
                 int iterations = Integer.parseInt(parts[1]);
@@ -83,6 +151,7 @@ public class Main {
                         } else {
                             isGapful = false;
                         }
+                        isSpy = getIsSpy(number, num);
 
                         if (isBuzz) results.add("buzz");
                         if (isDuck) results.add("duck");
@@ -93,6 +162,7 @@ public class Main {
                         } else {
                             results.add("odd");
                         }
+                        if (isSpy) results.add("spy");
 
                         System.out.print(number + " is ");
                         for (int j = 0; j < results.size(); j++) {
@@ -111,6 +181,20 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static boolean getIsSpy(long number, String num) {
+        int sum = 0;
+        int product = 1;
+
+        int[] digits = getDigitArray(number);
+
+        for (int i = 0; i < digits.length; i++) {
+            sum += digits[i];
+            product *= digits[i];
+        }
+
+        return sum == product;
     }
 
     private static boolean getIsGapful(long number) {
