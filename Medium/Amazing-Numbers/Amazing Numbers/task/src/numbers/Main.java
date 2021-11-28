@@ -15,19 +15,12 @@ public class Main {
         boolean isPalindromic = false;
         boolean isGapful = false;
         boolean isSpy = false;
+        boolean isSunny = false;
+        boolean isSquare = false;
         long number = 0;
         String num = "";
 
-        System.out.println("Welcome to Amazing Numbers!\n");
-        System.out.println("Supported requests:");
-        System.out.println("- enter a natural number to know its properties;");
-        System.out.println("- enter two natural numbers to obtain the properties of the list:");
-        System.out.println("  * the first parameter represents a starting number;");
-        System.out.println("  * the second parameter shows how many consecutive numbers are to be processed;");
-        System.out.println("- two natural numbers and a property to search for;");
-        System.out.println("- separate the parameters with one space;");
-        System.out.println("- enter 0 to exit.");
-
+        welcome();
 
         while (true) {
             System.out.println("Enter a request:");
@@ -133,6 +126,13 @@ public class Main {
                     System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]");
                 }
 
+            } else if (parts.length == 4) {
+                number = Long.parseLong(parts[0]);
+                int iterations = Integer.parseInt(parts[1]);
+                String property = parts[2].toLowerCase();
+                String property2 = parts[3].toLowerCase();
+
+
             } else {
                 number = Long.parseLong(parts[0]);
                 int iterations = Integer.parseInt(parts[1]);
@@ -181,6 +181,18 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static void welcome() {
+        System.out.println("Welcome to Amazing Numbers!\n");
+        System.out.println("Supported requests:");
+        System.out.println("- enter a natural number to know its properties;");
+        System.out.println("- enter two natural numbers to obtain the properties of the list:");
+        System.out.println("  * the first parameter represents a starting number;");
+        System.out.println("  * the second parameter shows how many consecutive numbers are to be processed;");
+        System.out.println("- two natural numbers and two properties to search for;");
+        System.out.println("- separate the parameters with one space;");
+        System.out.println("- enter 0 to exit.");
     }
 
     private static boolean getIsSpy(long number, String num) {
