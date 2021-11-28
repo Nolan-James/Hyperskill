@@ -14,6 +14,7 @@ public class Main {
         boolean isDuck = false;
         boolean isPalindromic = false;
         boolean isGapful = false;
+        long number = 0;
         String num = "";
 
         System.out.println("Welcome to Amazing Numbers!\n");
@@ -28,37 +29,88 @@ public class Main {
 
         while (true) {
             System.out.println("Enter a request:");
-            long number = scanner.nextLong();
-            if (number == 0) {
-                break;
-            } else {
-                if (number > 10) {
-                    num = Objects.toString(number);
-                }
+            String numberAsString = scanner.nextLine();
+            String[] parts = numberAsString.split(" ");
 
-                boolean isNatural = getIsNatural(number);
-
-                if (isNatural) {
-                    isEvenOrOdd = getIsEvenOrOdd(number);
-                    isBuzz = getIsBuzz(number, num);
-                    isDuck = getIsDuck(number);
-                    isPalindromic = getIsPalindromic(number);
-                    isGapful = getIsGapful(number);
-
-                    System.out.println("Properties of " + number);
-                    System.out.println("even: " + isEvenOrOdd);
-                    System.out.println("odd: " + !isEvenOrOdd);
-                    System.out.println("buzz: " + isBuzz);
-                    System.out.println("duck: " + isDuck);
-                    System.out.println("palindromic: " + isPalindromic);
-                    System.out.println("gapful: " + isGapful);
+            if (parts.length < 2) {
+                number = Long.parseLong(numberAsString);
+                if (number == 0) {
+                    break;
                 } else {
-                    System.out.println("The first parameter should be a natural number or zero.");
+                    if (number > 10) {
+                        num = Objects.toString(number);
+                    }
+
+                    boolean isNatural = getIsNatural(number);
+
+                    if (isNatural) {
+                        isEvenOrOdd = getIsEvenOrOdd(number);
+                        isBuzz = getIsBuzz(number, num);
+                        isDuck = getIsDuck(number);
+                        isPalindromic = getIsPalindromic(number);
+                        if (numberAsString.length() >= 3) {
+                            isGapful = getIsGapful(number);
+                        } else {
+                            isGapful = false;
+                        }
+
+                        System.out.println("Properties of " + number);
+                        System.out.println("even: " + isEvenOrOdd);
+                        System.out.println("odd: " + !isEvenOrOdd);
+                        System.out.println("buzz: " + isBuzz);
+                        System.out.println("duck: " + isDuck);
+                        System.out.println("palindromic: " + isPalindromic);
+                        System.out.println("gapful: " + isGapful);
+                    } else {
+                        System.out.println("The first parameter should be a natural number or zero.");
+                    }
+                }
+            } else {
+                number = Long.parseLong(parts[0]);
+                int iterations = Integer.parseInt(parts[1]);
+                if (getIsNatural(iterations)) {
+
+
+                    for (long i = 0; i < iterations; i++) {
+                        num = Objects.toString(number);
+                        ArrayList<String> results = new ArrayList<>();
+                        isEvenOrOdd = getIsEvenOrOdd(number);
+                        isBuzz = getIsBuzz(number, num);
+                        isDuck = getIsDuck(number);
+                        isPalindromic = getIsPalindromic(number);
+                        if (parts[0].length() >= 3) {
+                            isGapful = getIsGapful(number);
+                        } else {
+                            isGapful = false;
+                        }
+
+                        if (isBuzz) results.add("buzz");
+                        if (isDuck) results.add("duck");
+                        if (isPalindromic) results.add("palindromic");
+                        if (isGapful) results.add("gapful");
+                        if (isEvenOrOdd) {
+                            results.add("even");
+                        } else {
+                            results.add("odd");
+                        }
+
+                        System.out.print(number + " is ");
+                        for (int j = 0; j < results.size(); j++) {
+                            if (j == results.size() - 1) {
+                                System.out.print(results.get(j));
+                            } else {
+                                System.out.print(results.get(j) + ", ");
+                            }
+
+                        }
+                        System.out.println("");
+                        number++;
+                    }
+                } else {
+                    System.out.println("second parameter should be a natural number.");
                 }
             }
         }
-
-
     }
 
     private static boolean getIsGapful(long number) {
@@ -134,7 +186,7 @@ public class Main {
             num = String.valueOf(num.charAt(num.length() - 1));
             if (number % 7 == 0) {
                 return true;
-            } else if (Integer.parseInt(num) == 7) {
+            } else if (Long.parseLong(num) == 7) {
                 return true;
             } else {
                 return false;
