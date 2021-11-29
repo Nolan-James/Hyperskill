@@ -3,10 +3,16 @@ package numbers;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
+
 public class Main {
+    enum PropertyTerms {
+        BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean isEvenOrOdd = false;
@@ -49,6 +55,8 @@ public class Main {
                             isGapful = false;
                         }
                         isSpy = getIsSpy(number, num);
+                        isSquare = getIsSquare(number);
+                        isSunny = getIsSquare(number + 1);
 
                         System.out.println("Properties of " + number);
                         System.out.println("even: " + isEvenOrOdd);
@@ -58,6 +66,8 @@ public class Main {
                         System.out.println("palindromic: " + isPalindromic);
                         System.out.println("gapful: " + isGapful);
                         System.out.println("spy: " + isSpy);
+                        System.out.println("square: " + isSquare);
+                        System.out.println("sunny: " + isSunny);
                     } else {
                         System.out.println("The first parameter should be a natural number or zero.");
                     }
@@ -66,10 +76,14 @@ public class Main {
                 number = Long.parseLong(parts[0]);
                 int iterations = Integer.parseInt(parts[1]);
                 String property = parts[2].toLowerCase();
+                boolean isProperty = false;
 
-                if (property.equals("buzz") || property.equals("duck") || property.equals("palindromic")
-                        || property.equals("gapful") || property.equals("spy")
-                        || property.equals("even") || property.equals("odd")) {
+                for (PropertyTerms propertyFromEnum : PropertyTerms.values()) {
+                    if (property.toLowerCase().equals(propertyFromEnum.toString().toLowerCase())) {
+                        isProperty = true;
+                    }
+                }
+                if (isProperty) {
                     if (getIsNatural(iterations)) {
                         int count = 0;
                         while (count != iterations) {
@@ -90,6 +104,9 @@ public class Main {
                                     isGapful = false;
                                 }
                                 isSpy = getIsSpy(number, num);
+                                isSquare = getIsSquare(number);
+                                isSunny = getIsSquare(number + 1);
+
 
                                 if (isBuzz) results.add("buzz");
                                 if (isDuck) results.add("duck");
@@ -101,6 +118,8 @@ public class Main {
                                     results.add("odd");
                                 }
                                 if (isSpy) results.add("spy");
+                                if (isSquare) results.add("square");
+                                if (isSunny) results.add("sunny");
 
                                 if (results.contains(property)) {
                                     System.out.print(number + " is ");
@@ -123,15 +142,105 @@ public class Main {
                     }
                 } else {
                     System.out.println("The property [" + property + "] is wrong.");
-                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]");
-                }
+                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY]");
 
+                }
             } else if (parts.length == 4) {
                 number = Long.parseLong(parts[0]);
                 int iterations = Integer.parseInt(parts[1]);
                 String property = parts[2].toLowerCase();
                 String property2 = parts[3].toLowerCase();
+                boolean isProperty = false;
+                boolean isProperty2 = false;
 
+                for (PropertyTerms propertyFromEnum : PropertyTerms.values()) {
+                    if (property.toLowerCase().equals(propertyFromEnum.toString().toLowerCase())) {
+                        isProperty = true;
+                    }
+                    if (property2.toLowerCase().equals(propertyFromEnum.toString().toLowerCase())) {
+                        isProperty2 = true;
+                    }
+                }
+
+                if (isProperty && isProperty2) {
+                    if ((property.equals("sunny") && property2.equals("square") || (property.equals("square") && property2.equals("sunny")))) {
+                        System.out.println("The request contains mutually exclusive properties: [SQUARE, SUNNY]");
+                        System.out.println("There are no numbers with these properties.");
+                    } else if ((property.equals("odd") && property2.equals("even") || (property.equals("even") && property2.equals("odd")))) {
+                        System.out.println("The request contains mutually exclusive properties: [ODD, EVEN]");
+                        System.out.println("There are no numbers with these properties.");
+                    } else if ((property.equals("spy") && property2.equals("duck") || (property.equals("duck") && property2.equals("spy")))) {
+                        System.out.println("The request contains mutually exclusive properties: [SPY, DUCK]");
+                        System.out.println("There are no numbers with these properties.");
+                    } else {
+                        if (getIsNatural(iterations)) {
+                            int count = 0;
+                            while (count != iterations) {
+                                for (long i = 0; i < iterations; i++) {
+                                    if (count == iterations) {
+                                        break;
+                                    }
+                                    num = Objects.toString(number);
+                                    parts[0] = String.valueOf(number);
+                                    ArrayList<String> results = new ArrayList<>();
+                                    isEvenOrOdd = getIsEvenOrOdd(number);
+                                    isBuzz = getIsBuzz(number, num);
+                                    isDuck = getIsDuck(number);
+                                    isPalindromic = getIsPalindromic(number);
+                                    if (parts[0].length() >= 3) {
+                                        isGapful = getIsGapful(number);
+                                    } else {
+                                        isGapful = false;
+                                    }
+                                    isSpy = getIsSpy(number, num);
+                                    isSquare = getIsSquare(number);
+                                    isSunny = getIsSquare(number + 1);
+
+                                    if (isBuzz) results.add("buzz");
+                                    if (isDuck) results.add("duck");
+                                    if (isPalindromic) results.add("palindromic");
+                                    if (isGapful) results.add("gapful");
+                                    if (isEvenOrOdd) {
+                                        results.add("even");
+                                    } else {
+                                        results.add("odd");
+                                    }
+                                    if (isSpy) results.add("spy");
+                                    if (isSquare) results.add("square");
+                                    if (isSunny) results.add("sunny");
+
+                                    if (results.contains(property) && results.contains(property2)) {
+                                        System.out.print(number + " is ");
+                                        for (int j = 0; j < results.size(); j++) {
+                                            if (j == results.size() - 1) {
+                                                System.out.print(results.get(j));
+                                            } else {
+                                                System.out.print(results.get(j) + ", ");
+                                            }
+
+                                        }
+                                        System.out.println("");
+                                        count++;
+                                        number++;
+                                    } else {
+                                        number++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+//                    System.out.println("The properties [" + property + ", " + property2 + "]  is wrong.");
+                    if ((!isProperty) && (!isProperty2)) {
+                        System.out.println("The properties [" + property + ", " + property2 + "] are wrong.");
+                    } else if (!isProperty) {
+                        System.out.println("The property [" + property + "] is wrong.");
+                    } else {
+                        System.out.println("The property [" + property + "] is wrong.");
+                    }
+                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY]");
+
+                }
 
             } else {
                 number = Long.parseLong(parts[0]);
@@ -152,6 +261,8 @@ public class Main {
                             isGapful = false;
                         }
                         isSpy = getIsSpy(number, num);
+                        isSquare = getIsSquare(number);
+                        isSunny = getIsSquare(number + 1);
 
                         if (isBuzz) results.add("buzz");
                         if (isDuck) results.add("duck");
@@ -163,6 +274,8 @@ public class Main {
                             results.add("odd");
                         }
                         if (isSpy) results.add("spy");
+                        if (isSquare) results.add("square");
+                        if (isSunny) results.add("sunny");
 
                         System.out.print(number + " is ");
                         for (int j = 0; j < results.size(); j++) {
@@ -177,10 +290,17 @@ public class Main {
                         number++;
                     }
                 } else {
-                    System.out.println("second parameter should be a natural number.");
+                    System.out.println("The second parameter should be a natural number.");
                 }
             }
         }
+
+    }
+
+    private static boolean getIsSquare(long number) {
+        double square_root = Math.sqrt(number);
+
+        return ((square_root - Math.floor(square_root)) == 0);
     }
 
     private static void welcome() {
