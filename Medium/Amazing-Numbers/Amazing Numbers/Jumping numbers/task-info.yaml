@@ -911,6 +911,42 @@ files:
         }
     }
   learner_created: false
+- name: src/numbers/Number.java
+  visible: true
+  learner_created: true
+- name: src/numbers/PropertyTerms.java
+  visible: true
+  learner_created: true
+- name: src/numbers/EvenNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/OddNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/BuzzNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/DuckNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/PalindromicNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/SpyNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/GapfulNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/SquareNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/SunnyNumber.java
+  visible: true
+  learner_created: true
+- name: src/numbers/JumpingNumber.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/184/stages/937/implement#comment
 status: Unchecked
 record: -1
