@@ -2,15 +2,12 @@ package numbers;
 
 import org.w3c.dom.ls.LSOutput;
 
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
     enum PropertyTerms {
-        BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY
+        BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY, JUMPING
     }
 
     public static void main(String[] args) {
@@ -23,6 +20,7 @@ public class Main {
         boolean isSpy = false;
         boolean isSunny = false;
         boolean isSquare = false;
+        boolean isJumping = false;
         long number = 0;
         String num = "";
 
@@ -57,6 +55,7 @@ public class Main {
                         isSpy = getIsSpy(number, num);
                         isSquare = getIsSquare(number);
                         isSunny = getIsSquare(number + 1);
+                        isJumping = getIsJumping(number);
 
                         System.out.println("Properties of " + number);
                         System.out.println("even: " + isEvenOrOdd);
@@ -68,6 +67,7 @@ public class Main {
                         System.out.println("spy: " + isSpy);
                         System.out.println("square: " + isSquare);
                         System.out.println("sunny: " + isSunny);
+                        System.out.println("jumping: " + isJumping);
                     } else {
                         System.out.println("The first parameter should be a natural number or zero.");
                     }
@@ -120,6 +120,7 @@ public class Main {
                                 if (isSpy) results.add("spy");
                                 if (isSquare) results.add("square");
                                 if (isSunny) results.add("sunny");
+                                if (isJumping) results.add("jumping");
 
                                 if (results.contains(property)) {
                                     System.out.print(number + " is ");
@@ -242,6 +243,27 @@ public class Main {
 
                 }
 
+            } else if (parts.length > 4) {
+                number = Long.parseLong(parts[0]);
+                int iterations = Integer.parseInt(parts[1]);
+                HashMap<String, Boolean> properties = new HashMap<>();
+                for (int i = 2; i < parts.length; i++) {
+                    properties.put(parts[i].toLowerCase(), false);
+                }
+
+                for (String property : properties.keySet()) {
+                    for (PropertyTerms propertyTerms : PropertyTerms.values()) {
+                        if (property.equalsIgnoreCase(propertyTerms.toString())) {
+                            properties.put(String.valueOf(properties.get(property)), true);
+                        }
+                    }
+                }
+
+
+//                for (Boolean value : properties.values()) {
+//                    System.out.println(value);
+//                }
+
             } else {
                 number = Long.parseLong(parts[0]);
                 int iterations = Integer.parseInt(parts[1]);
@@ -297,6 +319,32 @@ public class Main {
 
     }
 
+    private static boolean getIsJumping(long number) {
+        String numberString = String.valueOf(number);
+        int before = 0;
+        int next = 0;
+        int numberToCompare = 0;
+        boolean result = false;
+
+        for (int i = 0; i < numberString.length() - 1; i++) {
+            numberToCompare = Integer.parseInt(String.valueOf(numberString.charAt(i)));
+            before = numberToCompare - 1;
+            next = numberToCompare + 1;
+
+            if (Integer.parseInt(String.valueOf(numberString.charAt(i + 1))) == before ||
+                    Integer.parseInt(String.valueOf(numberString.charAt(i + 1))) == next ||
+                    Integer.parseInt(String.valueOf(numberString.charAt(i + 1))) == numberToCompare) {
+                result = true;
+            } else {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+
+    }
+
     private static boolean getIsSquare(long number) {
         double square_root = Math.sqrt(number);
 
@@ -310,7 +358,7 @@ public class Main {
         System.out.println("- enter two natural numbers to obtain the properties of the list:");
         System.out.println("  * the first parameter represents a starting number;");
         System.out.println("  * the second parameter shows how many consecutive numbers are to be processed;");
-        System.out.println("- two natural numbers and two properties to search for;");
+        System.out.println("- two natural numbers and properties to search for;");
         System.out.println("- separate the parameters with one space;");
         System.out.println("- enter 0 to exit.");
     }
