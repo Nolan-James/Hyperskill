@@ -1,14 +1,18 @@
 package search;
 
+import java.io.*;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
+        HashMap<String, String> listOfPeopleFromFile = new LinkedHashMap<>();
 
-        int amountOfPeople = getAmountOfPeople(scanner);
-
-        HashMap<String, String> listOfPeople = generateListOfPeople(amountOfPeople, scanner);
+        if (args[0].equals("--data")) {
+            listOfPeopleFromFile = generateListOfPeopleFromFile(args[1]);
+        } else {
+            System.out.println("Error");
+        }
 
         while (true) {
             showMenu();
@@ -17,10 +21,10 @@ public class Main {
                 case 0:
                     break;
                 case 1:
-                    findPersonFromList(scanner, listOfPeople);
+                    findPersonFromList(scanner, listOfPeopleFromFile);
                     break;
                 case 2:
-                    printAllPeople(listOfPeople);
+                    printAllPeople(listOfPeopleFromFile);
                     break;
                 default:
                     System.out.println("Incorrect option! Try again.");
@@ -32,41 +36,34 @@ public class Main {
 
     }
 
-    private static int getAmountOfPeople(Scanner scanner) {
-        System.out.println("Enter the number of people:");
-        String line = scanner.nextLine();
-        return Integer.parseInt(line);
-
-    }
-
-    private static HashMap<String, String> generateListOfPeople(int amountOfPeople, Scanner scanner) {
-        HashMap<String, String> tempList = new HashMap<>();
-        int start = 0;
+    private static HashMap<String, String> generateListOfPeopleFromFile(String arg) {
+        Scanner scanner = null;
+        HashMap<String, String> tempList = new LinkedHashMap<>();
         String line;
-        System.out.println("Enter all people:");
-
-        while (true) {
-            if (start == amountOfPeople) {
-                break;
-            }
-            line = scanner.nextLine();
-
-            if (line.equals(" ")) {
-                break;
-            } else {
+        File file = new File(arg);
+        try {
+            scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
                 String[] parts = line.split(" ");
                 if (parts.length == 1) {
-                    tempList.put(parts[0], "");
+                    tempList.put(parts[0].trim(), "".trim());
                 } else if (parts.length == 2) {
-                    tempList.put(parts[0], parts[1]);
+                    tempList.put(parts[0].trim() + " " + parts[1].trim(), "".trim());
                 } else {
-                    String fullName = parts[0] + " " + parts[1];
+                    String fullName = parts[0].trim() + " " + parts[1].trim();
                     tempList.put(fullName, parts[2]);
                 }
-
             }
-            start++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            scanner.close();
+            file.delete();
+
         }
+
+
         return tempList;
     }
 
@@ -86,7 +83,11 @@ public class Main {
 
         for (String name : listOfPeople.keySet()) {
             if (name.toLowerCase().contains(searchTerm.toLowerCase()) || listOfPeople.get(name).toLowerCase().contains(searchTerm.toLowerCase())) {
-                System.out.println(name.trim() + " " + listOfPeople.get(name).trim());
+                if (listOfPeople.get(name).equals("")) {
+                    System.out.println(name.trim());
+                } else {
+                    System.out.println(name.trim() + " " + listOfPeople.get(name).trim());
+                }
                 correctCount++;
             } else {
                 wrongCount++;
@@ -100,7 +101,11 @@ public class Main {
     private static void printAllPeople(HashMap<String, String> people) {
         System.out.println("=== List of people ===");
         for (String person : people.keySet()) {
-            System.out.println(person + " " + people.get(person));
+            if (people.get(person).equals("")) {
+                System.out.println(person);
+            } else {
+                System.out.println(person + " " + people.get(person));
+            }
         }
     }
 
