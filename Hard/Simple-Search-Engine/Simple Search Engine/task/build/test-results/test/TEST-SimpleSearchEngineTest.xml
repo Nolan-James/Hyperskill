@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SimpleSearchEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-14T11:44:00" hostname="DESKTOP-4337CLR" time="0.383">
+<testsuite name="SimpleSearchMethodEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-14T11:44:00" hostname="DESKTOP-4337CLR" time="0.383">
   <properties/>
-  <testcase name="start" classname="SimpleSearchEngineTest" time="0.383"/>
+  <testcase name="start" classname="SimpleSearchMethodEngineTest" time="0.383"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 === Menu ===

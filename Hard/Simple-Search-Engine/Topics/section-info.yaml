@@ -6,3 +6,6 @@ content:
 - Polymorphism
 - The Set interface
 - The Map interface
+- Strategy
+- Abstract class
+- Template method
