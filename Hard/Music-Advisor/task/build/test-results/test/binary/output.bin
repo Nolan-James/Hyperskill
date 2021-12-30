@@ -1,0 +1,34 @@
+[1;31m
+Start test 1[0m
+> auth
+‰https://accounts.spotify.com/authorize?client_id=9cb56016f11244088c69cf209d5737b2&redirect_uri=http://localhost:8080&response_type=code
+---SUCCESS---
+> exit
+---GOODBYE!---
+[1;31m
+Start test 2[0m
+> new
+)Please, provide access for application.
+> exit
+---GOODBYE!---
+[1;31m
+Start test 3[0m
+> featured
+)Please, provide access for application.
+> exit
+---GOODBYE!---
+[1;31m
+Start test 4[0m
+> auth
+‰https://accounts.spotify.com/authorize?client_id=9cb56016f11244088c69cf209d5737b2&redirect_uri=http://localhost:8080&response_type=code
+---SUCCESS---
+> new
+---NEW RELEASES---
+"Mountains [Sia, Diplo, Labrinth]
+)The Greatest Show [Panic! At The Disco]
+> featured
+---FEATURED---
+Mellow Morning
+Wake Up and Smell the Coffee
+> exit
+---GOODBYE!---
