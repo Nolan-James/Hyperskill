@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ReadabilityTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-12-31T14:09:41" hostname="DESKTOP-4337CLR" time="0.085">
+<testsuite name="ReadabilityTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-12-31T22:30:25" hostname="DESKTOP-4337CLR" time="0.093">
   <properties/>
-  <testcase name="start" classname="ReadabilityTest" time="0.085">
-    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Wrong number of syllables. Should be 196, but found 661&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Arguments: input.txt&#10;&#10;The text is: &#10;Readability is the ease with which a reader can understand a written text. In natural language, the readability of text depends on its content and its presentation. Researchers have used various factors to measure readability. Readability is more than simply legibility, which is a measure of how easily a reader can distinguish individual letters or characters from each other. Higher readability eases reading effort and speed for any reader, but it is especially important for those who do not have high reading comprehension. In readers with poor reading comprehension, raising the readability level of a text from mediocre to good can make the difference between success and failure&#10;&#10;Words: 108&#10;Sentences: 6&#10;Characters: 580&#10;Syllables: 661&#10;The score is: 12.86&#10;This text should be understood by 18-24-year-olds." type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
+  <testcase name="start" classname="ReadabilityTest" time="0.093">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;There is no Automated Readability Index in output&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Arguments: input.txt&#10;&#10;55&#10;The text is: &#10;Readability is the ease with which a reader can understand a written text. In natural language, the readability of text depends on its content and its presentation. Researchers have used various factors to measure readability. Readability is more than simply legibility, which is a measure of how easily a reader can distinguish individual letters or characters from each other. Higher readability eases reading effort and speed for any reader, but it is especially important for those who do not have high reading comprehension. In readers with poor reading comprehension, raising the readability level of a text from mediocre to good can make the difference between success and failure&#10;&#10;Words: 108&#10;Sentences: 6&#10;Characters: 580&#10;Syllables: 196&#10;Polysyllables: 22&#10;The score is: 12.86&#10;This text should be understood by 18-24-year-olds." type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
 
-Wrong number of syllables. Should be 196, but found 661
+There is no Automated Readability Index in output
 
 Please find below the output of your program during this failed test.
 
@@ -12,13 +12,15 @@ Please find below the output of your program during this failed test.
 
 Arguments: input.txt
 
+55
 The text is: 
 Readability is the ease with which a reader can understand a written text. In natural language, the readability of text depends on its content and its presentation. Researchers have used various factors to measure readability. Readability is more than simply legibility, which is a measure of how easily a reader can distinguish individual letters or characters from each other. Higher readability eases reading effort and speed for any reader, but it is especially important for those who do not have high reading comprehension. In readers with poor reading comprehension, raising the readability level of a text from mediocre to good can make the difference between success and failure
 
 Words: 108
 Sentences: 6
 Characters: 580
-Syllables: 661
+Syllables: 196
+Polysyllables: 22
 The score is: 12.86
 This text should be understood by 18-24-year-olds.
 	at org.junit.Assert.fail(Assert.java:88)
@@ -74,13 +76,15 @@ This text should be understood by 18-24-year-olds.
   </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
+55
 The text is: 
 Readability is the ease with which a reader can understand a written text. In natural language, the readability of text depends on its content and its presentation. Researchers have used various factors to measure readability. Readability is more than simply legibility, which is a measure of how easily a reader can distinguish individual letters or characters from each other. Higher readability eases reading effort and speed for any reader, but it is especially important for those who do not have high reading comprehension. In readers with poor reading comprehension, raising the readability level of a text from mediocre to good can make the difference between success and failure
 
 Words: 108
 Sentences: 6
 Characters: 580
-Syllables: 661
+Syllables: 196
+Polysyllables: 22
 The score is: 12.86
 This text should be understood by 18-24-year-olds.
 ]]></system-out>
