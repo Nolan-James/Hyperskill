@@ -19,11 +19,13 @@ public class Main {
                 int sentences = calculateSentences(input);
                 int words = calculateWords(input);
                 int chars = calculateChars(input);
+                int syllables = calculateSyllables(input);
 
                 printText(input);
                 printWords(words);
                 printSentences(sentences);
                 printChars(chars);
+                printSyllables(syllables);
 
                 double first = (double) chars / words;
                 double second = (double) words / sentences;
@@ -43,6 +45,16 @@ public class Main {
 
 //        int finalScoreRounded = (int) Math.ceil(score);
 
+    }
+
+    private static void printSyllables(int syllables) {
+        System.out.println("Syllables: " + syllables);
+
+    }
+
+    private static int calculateSyllables(String input) {
+        String regex = "[aeiouy]{2}";
+        return input.replaceAll("e", "z").replaceAll(regex, "").length();
     }
 
     private static void printResults(double scoreRounded, int ageMinimum) {
