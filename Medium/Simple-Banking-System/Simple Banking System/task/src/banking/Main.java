@@ -88,11 +88,45 @@ public class Main {
     }
 
     private static String generateCardNumber(Map<String, String> ccNumbers, String pin) {
+        int result = 0;
         int bin = 400000;
         Random random = new Random();
-        int accNum = random.nextInt(999999999);
-        int checksum = random.nextInt(10);
-        String creditCardNumber = bin + "" + accNum + "" + checksum;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < 9; i++) {
+            stringBuilder.append(random.nextInt(10));
+        }
+        int accNum = Integer.parseInt(String.valueOf(stringBuilder));
+        String creditCardNumber = bin + "" + accNum;
+
+        if (creditCardNumber.length() != 15) {
+            stringBuilder = new StringBuilder();
+            for (int i = 0; i < 9; i++) {
+                stringBuilder.append(random.nextInt(10));
+            }
+            accNum = Integer.parseInt(String.valueOf(stringBuilder));
+            creditCardNumber = bin + "" + accNum;
+        }
+
+        result = checkLuhnAlgo(creditCardNumber);
+        int checksum = 0;
+        for (int i = 0; i < 10; i++) {
+            if ((result + i) % 10 == 0) {
+                checksum = i;
+                break;
+            }
+        }
+        creditCardNumber = bin + "" + accNum + "" + checksum;
+
+        if (creditCardNumber.length() != 16) {
+            for (int i = 0; i < 10; i++) {
+                if ((result + i) % 10 == 0) {
+                    checksum = i;
+                    break;
+                }
+            }
+            creditCardNumber = bin + "" + accNum + "" + checksum;
+        }
 
         if (!ccNumbers.containsKey(pin)) {
             ccNumbers.put(pin, creditCardNumber);
@@ -100,6 +134,43 @@ public class Main {
 
         return creditCardNumber;
     }
+
+    private static int checkLuhnAlgo(String creditCardNumber) {
+        List<Integer> values = new ArrayList<>();
+        List<Integer> valuesBy2 = new ArrayList<>();
+        List<Integer> valuesMinus9 = new ArrayList<>();
+
+
+        for (String letter : creditCardNumber.split("")) {
+            values.add(Integer.parseInt(letter));
+        }
+        int sum = 0;
+
+        for (int i = 1; i < values.size() + 1; i++) {
+            if (i % 2 != 0) {
+                int newSum = values.get(i - 1) * 2;
+                valuesBy2.add(i - 1, newSum);
+            } else {
+                valuesBy2.add(values.get(i - 1));
+            }
+        }
+
+        for (int i = 0; i < valuesBy2.size(); i++) {
+            if (valuesBy2.get(i) > 9) {
+                int newSum = valuesBy2.get(i) - 9;
+                valuesMinus9.add(i, newSum);
+            } else {
+                valuesMinus9.add(i, valuesBy2.get(i));
+            }
+        }
+
+        for (Integer value : valuesMinus9) {
+            sum += value;
+        }
+
+        return sum;
+    }
+
 
     private static String printMenu(Scanner scanner) {
         System.out.println("1. Create an account");
