@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SimpleBankSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-01T00:36:27" hostname="DESKTOP-4337CLR" time="0.124">
+  <properties/>
+  <testcase name="start" classname="SimpleBankSystemTest" time="0.124"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+
+Your card has been created
+Your card number:
+4000001371092334
+Your card PIN:
+5326
+
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+
+Your card has been created
+Your card number:
+4000006516894634
+Your card PIN:
+3533
+
+1. Create an account
+2. Log into account
+0. Exit
+> 0
+?[1;31m
+Start test 2?[0m
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+
+Your card has been created
+Your card number:
+4000006706878215
+Your card PIN:
+3901
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 4000006706878215
+Enter your PIN:
+> 3901
+You have successfully logged in!
+1. Balance
+2. Log out
+0. Exit
+> 2
+1. Create an account
+2. Log into account
+0. Exit
+> 0
+?[1;31m
+Start test 3?[0m
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+
+Your card has been created
+Your card number:
+4000008626440591
+Your card PIN:
+1850
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 4000008626440591
+Enter your PIN:
+> 5896
+1. Create an account
+2. Log into account
+0. Exit
+> 0
+?[1;31m
+Start test 4?[0m
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+
+Your card has been created
+Your card number:
+4000006084934258
+Your card PIN:
+6092
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 400000492328680
+Enter your PIN:
+> 6092
+Wrong card number or PIN!
+1. Create an account
+2. Log into account
+0. Exit
+?[1;31m
+Start test 5?[0m
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+
+Your card has been created
+Your card number:
+4000006482620457
+Your card PIN:
+6096
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 4000006482620457
+Enter your PIN:
+> 6096
+You have successfully logged in!
+1. Balance
+2. Log out
+0. Exit
+> 1
+Balance: 0
+1. Balance
+2. Log out
+0. Exit
+> 0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
