@@ -1,9 +1,22 @@
 package banking;
 
+import org.sqlite.SQLiteDataSource;
+
+import javax.swing.plaf.nimbus.State;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        String url = "jdbc:sqlite:" + args[1];
+
+        Database database = new Database();
+        database.connect(url)
+        createDatabase(url);
+        createDatabaseTable(url);
         Scanner scanner = new Scanner(System.in);
         Map<String, String> ccNumbers = new HashMap<>();
         boolean loggedIn = false;
@@ -40,6 +53,36 @@ public class Main {
                 }
             }
 
+        }
+    }
+
+    private static void createDatabaseTable(String url) {
+        SQLiteDataSource dataSource = new SQLiteDataSource();
+        dataSource.setUrl(url);
+
+        try (Connection connection = dataSource.getConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISITS card(" +
+                        "id INTEGER PRIMARY KEY" +
+                        "number VARCHAR(16)" +
+                        "pin VARCHAR(4)" +
+                        "balance INTEGER DEFAULT 0" +
+                        ");");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    private static void createDatabase(String arg) {
+        SQLiteDataSource dataSource = new SQLiteDataSource();
+        dataSource.setUrl(arg);
+        try (Connection connection = dataSource.getConnection()) {
+            if (connection != null) {
+                System.out.println("Valid");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -88,28 +131,21 @@ public class Main {
     }
 
     private static String generateCardNumber(Map<String, String> ccNumbers, String pin) {
+//        boolean result = false;
         int result = 0;
         int bin = 400000;
         Random random = new Random();
-        StringBuilder stringBuilder = new StringBuilder();
+        int accNum = random.nextInt(999999999);
+        int checksum = random.nextInt(10);
+        String creditCardNumber = bin + "" + accNum + "" + checksum;
 
-        for (int i = 0; i < 9; i++) {
-            stringBuilder.append(random.nextInt(10));
-        }
-        int accNum = Integer.parseInt(String.valueOf(stringBuilder));
-        String creditCardNumber = bin + "" + accNum;
-
-        if (creditCardNumber.length() != 15) {
-            stringBuilder = new StringBuilder();
-            for (int i = 0; i < 9; i++) {
-                stringBuilder.append(random.nextInt(10));
-            }
-            accNum = Integer.parseInt(String.valueOf(stringBuilder));
-            creditCardNumber = bin + "" + accNum;
-        }
+//        while (!result) {
+//            result = checkLuhnAlgo(creditCardNumber);
+//            checksum = random.nextInt(10);
+//            creditCardNumber = bin + "" + accNum + "" + checksum;
+//        }
 
         result = checkLuhnAlgo(creditCardNumber);
-        int checksum = 0;
         for (int i = 0; i < 10; i++) {
             if ((result + i) % 10 == 0) {
                 checksum = i;
@@ -118,30 +154,27 @@ public class Main {
         }
         creditCardNumber = bin + "" + accNum + "" + checksum;
 
-        if (creditCardNumber.length() != 16) {
-            for (int i = 0; i < 10; i++) {
-                if ((result + i) % 10 == 0) {
-                    checksum = i;
-                    break;
-                }
-            }
-            creditCardNumber = bin + "" + accNum + "" + checksum;
-        }
+        addToDatabase(creditCardNumber);
 
-        if (!ccNumbers.containsKey(pin)) {
-            ccNumbers.put(pin, creditCardNumber);
-        }
+//        if (!ccNumbers.containsKey(pin)) {
+//            ccNumbers.put(pin, creditCardNumber);
+//        }
 
         return creditCardNumber;
     }
 
+    private static void addToDatabase(String creditCardNumber) {
+
+    }
+
     private static int checkLuhnAlgo(String creditCardNumber) {
+        String allButLast = creditCardNumber.substring(0, creditCardNumber.length() - 1);
         List<Integer> values = new ArrayList<>();
         List<Integer> valuesBy2 = new ArrayList<>();
         List<Integer> valuesMinus9 = new ArrayList<>();
 
 
-        for (String letter : creditCardNumber.split("")) {
+        for (String letter : allButLast.split("")) {
             values.add(Integer.parseInt(letter));
         }
         int sum = 0;
@@ -164,13 +197,17 @@ public class Main {
             }
         }
 
+//        valuesMinus9.add(Integer.parseInt(String.valueOf(creditCardNumber.charAt(creditCardNumber.length() - 1))));
+
         for (Integer value : valuesMinus9) {
             sum += value;
         }
 
         return sum;
-    }
 
+//        return sum % 10 == 0;
+
+    }
 
     private static String printMenu(Scanner scanner) {
         System.out.println("1. Create an account");

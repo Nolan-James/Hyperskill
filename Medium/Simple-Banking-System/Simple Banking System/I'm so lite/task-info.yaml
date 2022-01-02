@@ -1,17 +1,6 @@
 type: edu
 custom_name: stage3
 files:
-- name: src/banking/Main.java
-  visible: true
-  text: |-
-    package banking;
-
-    public class Main {
-        public static void main(String[] args) {
-            System.out.println("Hello, world!");
-        }
-    }
-  learner_created: false
 - name: test/SimpleBankSystemTest.java
   visible: false
   text: |
@@ -490,6 +479,40 @@ files:
         }
     }
   learner_created: false
+- name: src/banking/Main.java
+  visible: true
+  text: |-
+    package banking;
+
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello, world!");
+        }
+    }
+  learner_created: false
+- name: src/banking/Database.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/93/stages/517/implement#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: "Wrong answer in test #3\n\nYour database doesn&#39;t have a table named\
+    \ &#39;card&#39;\n\nPlease find below the output of your program during this failed\
+    \ test.\nNote that the &#39;&gt;&#39; character indicates the beginning of the\
+    \ input line.\n\n---\n\nArguments: -fileName card.s3db\n\nstdout:\nValid\n1. Create\
+    \ an account\n2. Log into account\n0. Exit\n&gt; 0\n\nstderr:\njava.sql.SQLException:\
+    \ near &quot;EXISITS&quot;: syntax error\n\tat org.sqlite.core.NativeDB.throwex(NativeDB.java:397)\n\
+    \tat org.sqlite.core.NativeDB._exec(Native Method)\n\tat org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)\n\
+    \tat banking.Main.createDatabaseTable(Main.java:62)\n\tat banking.Main.main(Main.java:16)\n\
+    \tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\
+    \tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n\
+    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
+    \tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\n\tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)\n\
+    \tat org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)\n\
+    \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)\n\
+    \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n\tat\
+    \ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
+    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
+    \tat java.base/java.lang.Thread.run(Thread.java:833)"
+  time: Sun, 02 Jan 2022 11:42:09 UTC
 record: 3
