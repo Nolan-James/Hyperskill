@@ -61,6 +61,22 @@ public class Database {
         return null;
     }
 
+    public int checkBalance(String url, int pin, String ccNumber) {
+        String sql = "SELECT balance FROM card WHERE number = " + ccNumber;
+
+        try (Connection connection = this.connect(url);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            while (resultSet.next()) {
+                return resultSet.getInt("balance");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     public void selectAll(String url) {
         String sql = "SELECT * FROM card";
 
