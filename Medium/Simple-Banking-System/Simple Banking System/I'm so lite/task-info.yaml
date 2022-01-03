@@ -496,91 +496,12 @@ files:
 - name: card.s3db
   visible: true
   learner_created: true
+- name: tempDatabase.s3db
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/93/stages/517/implement#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #5
-
-    Correct PIN for card number 4000001161720594 should be 0500
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    Arguments: -fileName card.s3db
-
-    Connected
-    Connected
-    1. Create an account
-    2. Log into account
-    0. Exit
-    &gt; 1
-    Connected
-
-    Your card has been created
-    Your card number:
-    4000001595290586
-    Your card PIN:
-    7920
-
-    1. Create an account
-    2. Log into account
-    0. Exit
-    &gt; 1
-    Connected
-
-    Your card has been created
-    Your card number:
-    4000002579386200
-    Your card PIN:
-    9381
-
-    1. Create an account
-    2. Log into account
-    0. Exit
-    &gt; 1
-    Connected
-
-    Your card has been created
-    Your card number:
-    4000001161720594
-    Your card PIN:
-    0500
-
-    1. Create an account
-    2. Log into account
-    0. Exit
-    &gt; 1
-    Connected
-
-    Your card has been created
-    Your card number:
-    4000009380086440
-    Your card PIN:
-    4843
-
-    1. Create an account
-    2. Log into account
-    0. Exit
-    &gt; 1
-    Connected
-
-    Your card has been created
-    Your card number:
-    4000007646908241
-    Your card PIN:
-    6813
-
-    1. Create an account
-    2. Log into account
-    0. Exit
-    &gt; 0
-    4000001595290586
-    4000002579386200
-    4000001161720594
-    4000009380086440
-    4000007646908241
-  time: Sun, 02 Jan 2022 23:13:04 UTC
+  message: Congratulations!
+  time: Mon, 03 Jan 2022 18:12:46 UTC
 record: 3

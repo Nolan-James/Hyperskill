@@ -1,7 +1,5 @@
 package banking;
 
-import org.sqlite.SQLiteDataSource;
-
 import java.sql.*;
 
 public class Database {
@@ -33,25 +31,6 @@ public class Database {
         }
     }
 
-//    public void createTable(String url) {
-//        SQLiteDataSource dataSource = new SQLiteDataSource();
-//        dataSource.setUrl(url);
-//
-//        try (Connection connection = this.connect(url)) {
-//            try (Statement statement = connection.createStatement()) {
-//                statement.executeUpdate("CREATE TABLE IF NOT EXISTS card(" +
-//                        "id INTEGER PRIMARY KEY," +
-//                        "number VARCHAR(16)," +
-//                        "pin VARCHAR(4)," +
-//                        "balance INTEGER DEFAULT 0)");
-//                System.out.println("Created");
-//            }
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//    }
-
-
     public void insert(String ccNumber, int pin, String url) {
         String sql = "INSERT INTO card (number, pin) VALUES(?,?)";
 
@@ -62,6 +41,24 @@ public class Database {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public String selectCard(String url, int pin) {
+        String sql = "SELECT * FROM card WHERE pin = " + pin;
+
+        try (Connection connection = this.connect(url);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            while (resultSet.next()) {
+                return resultSet.getString("number");
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
     public void selectAll(String url) {

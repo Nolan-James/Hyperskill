@@ -1,142 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SimpleBankSystemTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-01-02T23:13:04" hostname="DESKTOP-4337CLR" time="0.276">
+<testsuite name="SimpleBankSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-03T18:12:46" hostname="DESKTOP-4337CLR" time="0.385">
   <properties/>
-  <testcase name="start" classname="SimpleBankSystemTest" time="0.276">
-    <failure message="java.lang.AssertionError: Wrong answer in test #5&#10;&#10;Correct PIN for card number 4000001161720594 should be 0500&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -fileName card.s3db&#10;&#10;Connected&#10;Connected&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000001595290586&#10;Your card PIN:&#10;7920&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000002579386200&#10;Your card PIN:&#10;9381&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000001161720594&#10;Your card PIN:&#10;0500&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000009380086440&#10;Your card PIN:&#10;4843&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000007646908241&#10;Your card PIN:&#10;6813&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 0&#10;4000001595290586&#10;4000002579386200&#10;4000001161720594&#10;4000009380086440&#10;4000007646908241" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #5
-
-Correct PIN for card number 4000001161720594 should be 0500
-
-Please find below the output of your program during this failed test.
-Note that the '&gt;' character indicates the beginning of the input line.
-
----
-
-Arguments: -fileName card.s3db
-
-Connected
-Connected
-1. Create an account
-2. Log into account
-0. Exit
-&gt; 1
-Connected
-
-Your card has been created
-Your card number:
-4000001595290586
-Your card PIN:
-7920
-
-1. Create an account
-2. Log into account
-0. Exit
-&gt; 1
-Connected
-
-Your card has been created
-Your card number:
-4000002579386200
-Your card PIN:
-9381
-
-1. Create an account
-2. Log into account
-0. Exit
-&gt; 1
-Connected
-
-Your card has been created
-Your card number:
-4000001161720594
-Your card PIN:
-0500
-
-1. Create an account
-2. Log into account
-0. Exit
-&gt; 1
-Connected
-
-Your card has been created
-Your card number:
-4000009380086440
-Your card PIN:
-4843
-
-1. Create an account
-2. Log into account
-0. Exit
-&gt; 1
-Connected
-
-Your card has been created
-Your card number:
-4000007646908241
-Your card PIN:
-6813
-
-1. Create an account
-2. Log into account
-0. Exit
-&gt; 0
-4000001595290586
-4000002579386200
-4000001161720594
-4000009380086440
-4000007646908241
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:121)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-</failure>
-  </testcase>
+  <testcase name="start" classname="SimpleBankSystemTest" time="0.385"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Connected
@@ -145,6 +10,9 @@ Connected
 2. Log into account
 0. Exit
 > 0
+Connected
+4000008336003343
+400000193204651
 ?[1;31m
 Start test 2?[0m
 Connected
@@ -153,6 +21,9 @@ Connected
 2. Log into account
 0. Exit
 > 0
+Connected
+4000008336003343
+400000193204651
 ?[1;31m
 Start test 3?[0m
 Connected
@@ -161,6 +32,9 @@ Connected
 2. Log into account
 0. Exit
 > 0
+Connected
+4000008336003343
+400000193204651
 ?[1;31m
 Start test 4?[0m
 Connected
@@ -169,6 +43,9 @@ Connected
 2. Log into account
 0. Exit
 > 0
+Connected
+4000008336003343
+400000193204651
 ?[1;31m
 Start test 5?[0m
 Connected
@@ -181,9 +58,9 @@ Connected
 
 Your card has been created
 Your card number:
-4000001595290586
+4000004729870059
 Your card PIN:
-7920
+1780
 
 1. Create an account
 2. Log into account
@@ -193,9 +70,9 @@ Connected
 
 Your card has been created
 Your card number:
-4000002579386200
+4000005847903706
 Your card PIN:
-9381
+9474
 
 1. Create an account
 2. Log into account
@@ -205,9 +82,9 @@ Connected
 
 Your card has been created
 Your card number:
-4000001161720594
+4000001968383281
 Your card PIN:
-0500
+5215
 
 1. Create an account
 2. Log into account
@@ -217,9 +94,9 @@ Connected
 
 Your card has been created
 Your card number:
-4000009380086440
+4000004845182314
 Your card PIN:
-4843
+8136
 
 1. Create an account
 2. Log into account
@@ -229,19 +106,166 @@ Connected
 
 Your card has been created
 Your card number:
-4000007646908241
+4000003349955811
 Your card PIN:
-6813
+6149
 
 1. Create an account
 2. Log into account
 0. Exit
 > 0
-4000001595290586
-4000002579386200
-4000001161720594
-4000009380086440
-4000007646908241
+Connected
+4000004729870059
+4000005847903706
+4000001968383281
+4000004845182314
+4000003349955811
+4000004729870059
+4000005847903706
+4000001968383281
+4000004845182314
+4000003349955811
+?[1;31m
+Start test 6?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000004365708993
+Your card PIN:
+8546
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 4000004365708993
+Enter your PIN:
+> 8546
+Connected
+You have successfully logged in!
+1. Balance
+2. Log out
+0. Exit
+> 0
+?[1;31m
+Start test 7?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000006954205810
+Your card PIN:
+7793
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 4000006954205810
+Enter your PIN:
+> 9146
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+> 0
+Connected
+4000004729870059
+4000005847903706
+4000001968383281
+4000004845182314
+4000003349955811
+4000004365708993
+4000006954205810
+?[1;31m
+Start test 8?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000009553300057
+Your card PIN:
+5775
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 400000100889460
+Enter your PIN:
+> 5775
+Connected
+Wrong card number or PIN!
+1. Create an account
+2. Log into account
+0. Exit
+> 0
+Connected
+4000004729870059
+4000005847903706
+4000001968383281
+4000004845182314
+4000003349955811
+4000004365708993
+4000006954205810
+4000009553300057
+?[1;31m
+Start test 9?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000001714009834
+Your card PIN:
+9752
+
+1. Create an account
+2. Log into account
+0. Exit
+> 2
+Enter your card number:
+> 4000001714009834
+Enter your PIN:
+> 9752
+Connected
+You have successfully logged in!
+1. Balance
+2. Log out
+0. Exit
+> 1
+Balance: 0
+1. Balance
+2. Log out
+0. Exit
+> 0
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
