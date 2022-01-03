@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.285s</div>
+<div class="counter">0.276s</div>
 <p>duration</p>
 </div>
 </td>
@@ -69,9 +69,6 @@
 <li>
 <a href="#tab2">Standard output</a>
 </li>
-<li>
-<a href="#tab3">Standard error</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
@@ -79,9 +76,9 @@
 <a name="start"></a>
 <h3 class="failures">start</h3>
 <span class="code">
-<pre>java.lang.AssertionError: Wrong answer in test #3
+<pre>java.lang.AssertionError: Wrong answer in test #5
 
-Your database doesn't have a table named 'card'
+Correct PIN for card number 4000001161720594 should be 0500
 
 Please find below the output of your program during this failed test.
 Note that the '&gt;' character indicates the beginning of the input line.
@@ -90,31 +87,77 @@ Note that the '&gt;' character indicates the beginning of the input line.
 
 Arguments: -fileName card.s3db
 
-stdout:
-Valid
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000001595290586
+Your card PIN:
+7920
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000002579386200
+Your card PIN:
+9381
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000001161720594
+Your card PIN:
+0500
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000009380086440
+Your card PIN:
+4843
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000007646908241
+Your card PIN:
+6813
+
 1. Create an account
 2. Log into account
 0. Exit
 &gt; 0
-
-stderr:
-java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
+4000001595290586
+4000002579386200
+4000001161720594
+4000009380086440
+4000007646908241
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -182,7 +225,7 @@ java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
 </thead>
 <tr>
 <td class="failures">start</td>
-<td class="failures">0.285s</td>
+<td class="failures">0.276s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -192,82 +235,109 @@ java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
 <span class="code">
 <pre>?[1;31m
 Start test 1?[0m
-Valid
+Connected
+Connected
 1. Create an account
 2. Log into account
 0. Exit
 &gt; 0
 ?[1;31m
 Start test 2?[0m
-Valid
+Connected
+Connected
 1. Create an account
 2. Log into account
 0. Exit
 &gt; 0
 ?[1;31m
 Start test 3?[0m
-Valid
+Connected
+Connected
 1. Create an account
 2. Log into account
 0. Exit
 &gt; 0
-</pre>
-</span>
-</div>
-<div id="tab3" class="tab">
-<h2>Standard error</h2>
-<span class="code">
-<pre>java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
+?[1;31m
+Start test 4?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 0
+?[1;31m
+Start test 5?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000001595290586
+Your card PIN:
+7920
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000002579386200
+Your card PIN:
+9381
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000001161720594
+Your card PIN:
+0500
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000009380086440
+Your card PIN:
+4843
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000007646908241
+Your card PIN:
+6813
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 0
+4000001595290586
+4000002579386200
+4000001161720594
+4000009380086440
+4000007646908241
 </pre>
 </span>
 </div>
@@ -279,7 +349,7 @@ java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.1.1</a> at 2 Jan 2022, 11:42:09</p>
+<a href="http://www.gradle.org">Gradle 7.1.1</a> at 2 Jan 2022, 23:13:04</p>
 </div>
 </div>
 </body>

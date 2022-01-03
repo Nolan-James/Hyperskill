@@ -14,9 +14,9 @@ public class Main {
         String url = "jdbc:sqlite:" + args[1];
 
         Database database = new Database();
-        database.connect(url)
-        createDatabase(url);
-        createDatabaseTable(url);
+        database.connect(url);
+        database.createTable(url);
+
         Scanner scanner = new Scanner(System.in);
         Map<String, String> ccNumbers = new HashMap<>();
         boolean loggedIn = false;
@@ -25,12 +25,13 @@ public class Main {
             if (!loggedIn) {
                 String choice = printMenu(scanner);
                 if (choice.equals("0")) {
+                    database.selectAll(url);
                     break;
                 }
                 switch (choice) {
                     case "1":
                         String pin = generatePin();
-                        String cc = generateCardNumber(ccNumbers, pin);
+                        String cc = generateCardNumber(ccNumbers, pin, database, url);
                         createAccount(cc, pin);
                         break;
                     case "2":
@@ -62,7 +63,7 @@ public class Main {
 
         try (Connection connection = dataSource.getConnection()) {
             try (Statement statement = connection.createStatement()) {
-                statement.executeUpdate("CREATE TABLE IF NOT EXISITS card(" +
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS card(" +
                         "id INTEGER PRIMARY KEY" +
                         "number VARCHAR(16)" +
                         "pin VARCHAR(4)" +
@@ -130,7 +131,7 @@ public class Main {
         System.out.println(pin + "\n");
     }
 
-    private static String generateCardNumber(Map<String, String> ccNumbers, String pin) {
+    private static String generateCardNumber(Map<String, String> ccNumbers, String pin, Database database, String url) {
 //        boolean result = false;
         int result = 0;
         int bin = 400000;
@@ -154,7 +155,8 @@ public class Main {
         }
         creditCardNumber = bin + "" + accNum + "" + checksum;
 
-        addToDatabase(creditCardNumber);
+        int pinInt = Integer.parseInt(pin);
+        database.insert(creditCardNumber, pinInt, url);
 
 //        if (!ccNumbers.containsKey(pin)) {
 //            ccNumbers.put(pin, creditCardNumber);

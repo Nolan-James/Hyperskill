@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SimpleBankSystemTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-01-02T11:42:08" hostname="DESKTOP-4337CLR" time="0.285">
+<testsuite name="SimpleBankSystemTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-01-02T23:13:04" hostname="DESKTOP-4337CLR" time="0.276">
   <properties/>
-  <testcase name="start" classname="SimpleBankSystemTest" time="0.285">
-    <failure message="java.lang.AssertionError: Wrong answer in test #3&#10;&#10;Your database doesn't have a table named 'card'&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -fileName card.s3db&#10;&#10;stdout:&#10;Valid&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 0&#10;&#10;stderr:&#10;java.sql.SQLException: near &quot;EXISITS&quot;: syntax error&#10;&#9;at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)&#10;&#9;at org.sqlite.core.NativeDB._exec(Native Method)&#10;&#9;at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)&#10;&#9;at banking.Main.createDatabaseTable(Main.java:62)&#10;&#9;at banking.Main.main(Main.java:16)&#10;&#9;at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#10;&#9;at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#10;&#9;at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)&#10;&#9;at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)&#10;&#9;at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)&#10;&#9;at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)&#10;&#9;at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)&#10;&#9;at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)&#10;&#9;at java.base/java.lang.Thread.run(Thread.java:833)" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #3
+  <testcase name="start" classname="SimpleBankSystemTest" time="0.276">
+    <failure message="java.lang.AssertionError: Wrong answer in test #5&#10;&#10;Correct PIN for card number 4000001161720594 should be 0500&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -fileName card.s3db&#10;&#10;Connected&#10;Connected&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000001595290586&#10;Your card PIN:&#10;7920&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000002579386200&#10;Your card PIN:&#10;9381&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000001161720594&#10;Your card PIN:&#10;0500&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000009380086440&#10;Your card PIN:&#10;4843&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 1&#10;Connected&#10;&#10;Your card has been created&#10;Your card number:&#10;4000007646908241&#10;Your card PIN:&#10;6813&#10;&#10;1. Create an account&#10;2. Log into account&#10;0. Exit&#10;&gt; 0&#10;4000001595290586&#10;4000002579386200&#10;4000001161720594&#10;4000009380086440&#10;4000007646908241" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #5
 
-Your database doesn't have a table named 'card'
+Correct PIN for card number 4000001161720594 should be 0500
 
 Please find below the output of your program during this failed test.
 Note that the '&gt;' character indicates the beginning of the input line.
@@ -13,31 +13,77 @@ Note that the '&gt;' character indicates the beginning of the input line.
 
 Arguments: -fileName card.s3db
 
-stdout:
-Valid
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000001595290586
+Your card PIN:
+7920
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000002579386200
+Your card PIN:
+9381
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000001161720594
+Your card PIN:
+0500
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000009380086440
+Your card PIN:
+4843
+
+1. Create an account
+2. Log into account
+0. Exit
+&gt; 1
+Connected
+
+Your card has been created
+Your card number:
+4000007646908241
+Your card PIN:
+6813
+
 1. Create an account
 2. Log into account
 0. Exit
 &gt; 0
-
-stderr:
-java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
+4000001595290586
+4000002579386200
+4000001161720594
+4000009380086440
+4000007646908241
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -93,76 +139,109 @@ java.sql.SQLException: near &quot;EXISITS&quot;: syntax error
   </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
-Valid
+Connected
+Connected
 1. Create an account
 2. Log into account
 0. Exit
 > 0
 ?[1;31m
 Start test 2?[0m
-Valid
+Connected
+Connected
 1. Create an account
 2. Log into account
 0. Exit
 > 0
 ?[1;31m
 Start test 3?[0m
-Valid
+Connected
+Connected
 1. Create an account
 2. Log into account
 0. Exit
 > 0
+?[1;31m
+Start test 4?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+> 0
+?[1;31m
+Start test 5?[0m
+Connected
+Connected
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000001595290586
+Your card PIN:
+7920
+
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000002579386200
+Your card PIN:
+9381
+
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000001161720594
+Your card PIN:
+0500
+
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000009380086440
+Your card PIN:
+4843
+
+1. Create an account
+2. Log into account
+0. Exit
+> 1
+Connected
+
+Your card has been created
+Your card number:
+4000007646908241
+Your card PIN:
+6813
+
+1. Create an account
+2. Log into account
+0. Exit
+> 0
+4000001595290586
+4000002579386200
+4000001161720594
+4000009380086440
+4000007646908241
 ]]></system-out>
-  <system-err><![CDATA[java.sql.SQLException: near "EXISITS": syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-java.sql.SQLException: near "EXISITS": syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-java.sql.SQLException: near "EXISITS": syntax error
-	at org.sqlite.core.NativeDB.throwex(NativeDB.java:397)
-	at org.sqlite.core.NativeDB._exec(Native Method)
-	at org.sqlite.jdbc3.JDBC3Statement.executeUpdate(JDBC3Statement.java:116)
-	at banking.Main.createDatabaseTable(Main.java:62)
-	at banking.Main.main(Main.java:16)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
