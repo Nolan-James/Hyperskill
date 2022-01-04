@@ -4,19 +4,24 @@ import java.sql.*;
 
 public class Database {
 
-    public Connection connect(String url) {
+    private String url;
+
+    public Database(String url) {
+        this.url = url;
+    }
+
+    public Connection connect() {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection(url);
-            System.out.println("Connected");
+            connection = DriverManager.getConnection(this.url);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return connection;
     }
 
-    public void createTable(String url) {
+    public void createTable() {
         String sql = "CREATE TABLE IF NOT EXISTS card (\n"
                 + "     id integer PRIMARY KEY,\n"
                 + "     number text NOT NULL,\n"
@@ -24,17 +29,18 @@ public class Database {
                 + "     balance integer DEFAULT 0\n"
                 + ");";
 
-        try (Connection connection = this.connect(url); Statement statement = connection.createStatement()) {
+        try (Connection connection = this.connect(); Statement statement = connection.createStatement()) {
             statement.execute(sql);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public void insert(String ccNumber, int pin, String url) {
+    public void insert(String ccNumber, int pin) {
         String sql = "INSERT INTO card (number, pin) VALUES(?,?)";
 
-        try (Connection connection = this.connect(url); PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = this.connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, ccNumber);
             statement.setInt(2, pin);
             statement.executeUpdate();
@@ -43,10 +49,10 @@ public class Database {
         }
     }
 
-    public String selectCard(String url, int pin) {
+    public String selectCard(int pin) {
         String sql = "SELECT * FROM card WHERE pin = " + pin;
 
-        try (Connection connection = this.connect(url);
+        try (Connection connection = this.connect();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
 
@@ -61,11 +67,11 @@ public class Database {
         return null;
     }
 
-    public int checkBalance(String url, String ccNumber) {
+    public int checkBalance(String ccNumber) {
         String sql = "SELECT balance FROM card WHERE number = " + ccNumber;
         int balance = 0;
 
-        try (Connection connection = this.connect(url);
+        try (Connection connection = this.connect();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
 
@@ -80,11 +86,11 @@ public class Database {
         return balance;
     }
 
-    public void setBalance(String url, int amount, String ccNumber) {
+    public void setBalance(int amount, String ccNumber) {
         String sql = "UPDATE card SET balance = ? "
                 + "WHERE number = ?";
 
-        try (Connection connection = this.connect(url); PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = this.connect(); PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, amount);
             statement.setString(2, ccNumber);
 
@@ -94,11 +100,11 @@ public class Database {
         }
     }
 
-    public boolean cardExists(String url, String ccNumber) {
+    public boolean cardExists(String ccNumber) {
         String sql = "SELECT * FROM card WHERE number = ? ";
         boolean exists = false;
 
-        try (Connection connection = this.connect(url); PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = this.connect(); PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, ccNumber);
 
             ResultSet resultSet = statement.executeQuery();
@@ -113,10 +119,10 @@ public class Database {
         return exists;
     }
 
-    public void deleteCard(String url, String ccNumber) {
+    public void deleteCard(String ccNumber) {
         String sql = "DELETE FROM card WHERE number = ?";
 
-        try (Connection connection = this.connect(url); PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = this.connect(); PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, ccNumber);
 
             statement.executeUpdate();
@@ -128,7 +134,7 @@ public class Database {
     public void selectAll(String url) {
         String sql = "SELECT * FROM card";
 
-        try (Connection connection = this.connect(url);
+        try (Connection connection = this.connect();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
 
