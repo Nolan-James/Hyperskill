@@ -61,17 +61,65 @@ public class Database {
         return null;
     }
 
-    public int checkBalance(String url, int pin, String ccNumber) {
+    public int checkBalance(String url, String ccNumber) {
         String sql = "SELECT balance FROM card WHERE number = " + ccNumber;
+        int balance = 0;
 
         try (Connection connection = this.connect(url);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
-                return resultSet.getInt("balance");
+                balance = resultSet.getInt("balance");
             }
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return balance;
+    }
+
+    public void setBalance(String url, int amount, String ccNumber) {
+        String sql = "UPDATE card SET balance = ? "
+                + "WHERE number = ?";
+
+        try (Connection connection = this.connect(url); PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, amount);
+            statement.setString(2, ccNumber);
+
+            statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public boolean cardExists(String url, String ccNumber) {
+        String sql = "SELECT * FROM card WHERE number = ? ";
+        boolean exists = false;
+
+        try (Connection connection = this.connect(url); PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, ccNumber);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                exists = true;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return exists;
+    }
+
+    public void deleteCard(String url, String ccNumber) {
+        String sql = "DELETE FROM card WHERE number = ?";
+
+        try (Connection connection = this.connect(url); PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, ccNumber);
+
+            statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
