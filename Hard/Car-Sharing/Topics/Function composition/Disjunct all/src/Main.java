@@ -12,7 +12,7 @@ class CombiningPredicates {
      * For an empty list it returns the always false predicate.
      */
     public static IntPredicate disjunctAll(List<IntPredicate> predicates) {
-        return n -> predicates.size() == 0 ? false : 
+        return n -> false; // write your code here
     }
 
     // Don't change the code below
