@@ -1,25 +1,34 @@
 package carsharing;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     final static CompanyDao companyDao = new CompanyDaoImpl();
-    static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:file:../task/src/carsharing/db/";
+    final static CarDao carDao = new CarDaoImpl();
+    static int companyId = -1;
+    static String companyName = "";
+
+    static {
+        Database database = new Database();
+        database.dropTable("car");
+        database.dropTable("company");
+
+        database.createCompanyTable();
+        database.createCarTable();
+    }
 
     public static void main(String[] args) {
         boolean isRunning = true;
         boolean loggedIn = false;
+        boolean companySelected = false;
+        boolean choosingCar = false;
 
-        createDatabase();
+//        createDatabase();
 //        dropDatabase();
 
         Scanner scanner = new Scanner(System.in);
+
 
         while (isRunning) {
             int result = showMenu(scanner);
@@ -34,7 +43,35 @@ public class Main {
 
                         switch (managerResult) {
                             case 1:
-                                printCompanies();
+                                companySelected = true;
+                                while (companySelected) {
+                                    int companyResult = selectCompany(scanner);
+
+                                    if (companyResult == 0) {
+                                        companySelected = false;
+                                    } else {
+                                        choosingCar = true;
+
+                                        while (choosingCar) {
+                                            int carResult = showCars(scanner);
+                                            companySelected = false;
+
+                                            switch (carResult) {
+                                                case 1:
+                                                    listAllCars();
+                                                    break;
+                                                case 2:
+                                                    createCar(scanner);
+                                                    break;
+                                                case 0:
+                                                    choosingCar = false;
+                                                    break;
+                                            }
+                                        }
+
+                                    }
+                                }
+
                                 break;
                             case 2:
                                 createCompany(scanner);
@@ -49,51 +86,33 @@ public class Main {
 
     }
 
-    private static void dropDatabase() {
-        Connection connection = null;
-        Statement statement = null;
-
-        try {
-            Class.forName(JDBC_DRIVER);
-
-            connection = DriverManager.getConnection(DB_URL + "carsharing");
-            connection.setAutoCommit(true);
-            statement = connection.createStatement();
-
-            String sql = "DROP TABLE company";
-
-            statement.executeUpdate(sql);
-
-            statement.close();
-            connection.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+    private static void listAllCars() {
+        List<Car> cars = carDao.listCars(companyId);
+        if (cars.isEmpty()) {
+            System.out.println("The car list is empty!");
+        } else {
+            System.out.println("Car list:");
+            for (int i = 0; i < cars.size(); i++) {
+                System.out.println((i + 1) + ". " + cars.get(i).getName());
+            }
+//            cars.forEach(System.out::println);
         }
     }
 
-    private static void createDatabase() {
-        Connection connection = null;
-        Statement statement = null;
+    private static void createCar(Scanner scanner) {
+        System.out.println("Enter the car name:");
+        String carName = scanner.nextLine();
+        carDao.addCar(carName, companyId);
+    }
 
-        try {
-            Class.forName(JDBC_DRIVER);
+    private static int showCars(Scanner scanner) {
+        System.out.println("'" + companyName + "' company");
+        System.out.println("1. Car list");
+        System.out.println("2. Create a car");
+        System.out.println("0. Back");
 
-            connection = DriverManager.getConnection(DB_URL + "carsharing");
-            connection.setAutoCommit(true);
-            statement = connection.createStatement();
-
-            String sql = "CREATE TABLE IF NOT EXISTS COMPANY " +
-                    "(id INT PRIMARY KEY AUTO_INCREMENT, " +
-                    " name VARCHAR(255) UNIQUE NOT NULL" +
-                    ")";
-
-            statement.executeUpdate(sql);
-
-            statement.close();
-            connection.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
+        String result = scanner.nextLine();
+        return Integer.parseInt(result);
     }
 
     private static void createCompany(Scanner scanner) {
@@ -102,16 +121,24 @@ public class Main {
         companyDao.createCompany(companyName);
     }
 
-    private static void printCompanies() {
+    private static int selectCompany(Scanner scanner) {
         List<Company> companies = companyDao.getCompanies();
+        String result = "";
 
         if (companies.isEmpty()) {
             System.out.println("The company list is empty!");
+            result = "0";
         } else {
-            System.out.println("Company Size: " + companies.size());
+            System.out.println("Choose the company:");
             companies.forEach(System.out::println);
+            System.out.println("0. Back");
+            result = scanner.nextLine();
+            Company company = companyDao.getCompany(Integer.parseInt(result));
+
+            companyId = company.getId();
+            companyName = company.getName();
         }
-        System.out.println();
+        return Integer.parseInt(result);
     }
 
     private static int logInMenu(Scanner scanner) {

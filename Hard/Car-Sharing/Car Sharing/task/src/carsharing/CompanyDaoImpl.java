@@ -14,9 +14,9 @@ public class CompanyDaoImpl implements CompanyDao {
         this.companies = new ArrayList<>();
     }
 
-
     @Override
     public List<Company> getCompanies() {
+        this.companies = new ArrayList<>();
         Connection connection = null;
         Statement statement = null;
 
@@ -46,6 +46,38 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
+    public Company getCompany(int id) {
+        Connection connection = null;
+        Statement statement = null;
+        Company company = new Company();
+
+        try {
+            Class.forName(JDBC_DRIVER);
+
+            connection = DriverManager.getConnection(DB_URL + "carsharing");
+            connection.setAutoCommit(true);
+            statement = connection.createStatement();
+
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM company WHERE id = ?;");
+            preparedStatement.setInt(1, id);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                company.setId(rs.getInt("id"));
+                company.setName(rs.getString("name"));
+            }
+
+            statement.close();
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return company;
+    }
+
+    @Override
     public void createCompany(String companyName) {
         Connection connection = null;
         Statement statement = null;
@@ -60,7 +92,6 @@ public class CompanyDaoImpl implements CompanyDao {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO company (name) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, companyName);
             preparedStatement.executeUpdate();
-
 
             statement.close();
             connection.close();
